@@ -7,11 +7,6 @@ const useSendMessage = () => {
 	const { messages, setMessages, selectedConversation } = useConversation();
 
 	const sendMessage = async (message) => {
-		if (!selectedConversation) {
-			toast.error("No conversation selected");
-			return;
-		}
-
 		setLoading(true);
 		try {
 			const res = await fetch(`/api/messages/send/${selectedConversation._id}`, {
@@ -34,5 +29,4 @@ const useSendMessage = () => {
 
 	return { sendMessage, loading };
 };
-
 export default useSendMessage;
